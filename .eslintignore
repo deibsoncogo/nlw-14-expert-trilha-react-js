@@ -1,0 +1,7 @@
+node_modules
+coverage
+temp
+dist
+build
+react-app-env.d.ts
+reportWebVitals.ts
