@@ -11,19 +11,16 @@ export function App() {
         <input
           type="text"
           placeholder="Busque em suas notas..."
-          className="w-full bg-transparent text-3xl font-semibold tracking-tight outline-none placeholder:text-slate-500"
+          className="placeholder:text-state-500 w-full bg-transparent text-3xl font-semibold tracking-tight outline-none"
         />
       </form>
 
-      <div className="hpx bg-slate-700" />
+      <div className="h-px bg-slate-700" />
 
       <div className="grid auto-rows-[250px] grid-cols-3 gap-6">
         <NewNoteCard />
 
-        <NoteCard />
-        <NoteCard />
-        <NoteCard />
-        <NoteCard />
+        <NoteCard note={{ date: new Date(), content: "Hello word" }} />
       </div>
     </div>
   )
