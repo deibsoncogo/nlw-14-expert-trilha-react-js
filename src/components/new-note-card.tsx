@@ -8,20 +8,19 @@ interface NewNoteCardProps {
 }
 
 export function NewNoteCard({ onNoteCreated }: NewNoteCardProps) {
-  const [shouldShowOnBoarding, setShouldShowOnBoarding] = useState(true)
+  const [shouldShowOnboarding, setShouldShowOnboarding] = useState(true)
   const [isRecording, setIsRecording] = useState(false)
   const [content, setContent] = useState("")
 
   let speechRecognition: SpeechRecognition | null = null
 
   function handleStartEditor() {
-    setShouldShowOnBoarding(false)
+    setShouldShowOnboarding(false)
   }
 
   function handleContentChanged(event: ChangeEvent<HTMLTextAreaElement>) {
     setContent(event.target.value)
-
-    if (event.target.value === "") setShouldShowOnBoarding(true)
+    if (event.target.value === "") setShouldShowOnboarding(true)
   }
 
   function handleSaveNote(event: FormEvent) {
@@ -32,9 +31,9 @@ export function NewNoteCard({ onNoteCreated }: NewNoteCardProps) {
     onNoteCreated(content)
 
     setContent("")
-    setShouldShowOnBoarding(true)
+    setShouldShowOnboarding(true)
 
-    toast.success("Nota criada com sucesso")
+    toast.success("Nota criada com sucesso!")
   }
 
   function handleStartRecording() {
@@ -42,10 +41,12 @@ export function NewNoteCard({ onNoteCreated }: NewNoteCardProps) {
       || "webkitSpeechRecognition" in window
 
     if (!isSpeechRecognitionAPIAvailable) {
-      return alert("Infelizmente seu navegador não suporta a API de gravação!")
+      alert("Infelizmente seu navegador não suporta a API de gravação!")
+      return
     }
 
     setIsRecording(true)
+    setShouldShowOnboarding(false)
 
     const SpeechRecognitionAPI = window.SpeechRecognition
       || window.webkitSpeechRecognition
@@ -74,7 +75,6 @@ export function NewNoteCard({ onNoteCreated }: NewNoteCardProps) {
 
   function handleStopRecording() {
     setIsRecording(false)
-
     if (speechRecognition !== null) speechRecognition.stop()
   }
 
@@ -92,9 +92,8 @@ export function NewNoteCard({ onNoteCreated }: NewNoteCardProps) {
 
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-black/50" />
-
-        <Dialog.Content className="insert-0 fixed flex w-full flex-col overflow-hidden bg-slate-700 outline-none md:inset-auto md:left-1/2 md:top-1/2 md:h-[60vh] md:max-w-[640px] md:-translate-x-1/2 md:-translate-y-1/2 md:rounded-md">
-          <Dialog.Close className="absolute right-0 top-0 bg-slate-500 text-slate-400 hover:text-slate-100">
+        <Dialog.Content className="fixed inset-0 flex w-full flex-col overflow-hidden bg-slate-700 outline-none md:inset-auto md:left-1/2 md:top-1/2 md:h-[60vh] md:max-w-[640px] md:-translate-x-1/2 md:-translate-y-1/2 md:rounded-md">
+          <Dialog.Close className="absolute right-0 top-0 bg-slate-800 p-1.5 text-slate-400 hover:text-slate-100">
             <X className="size-5" />
           </Dialog.Close>
 
@@ -104,7 +103,7 @@ export function NewNoteCard({ onNoteCreated }: NewNoteCardProps) {
                 Adicionar nota
               </span>
 
-              {shouldShowOnBoarding ? (
+              {shouldShowOnboarding ? (
                 <p className="text-sm leading-6 text-slate-400">
                   Comece {" "}
 
