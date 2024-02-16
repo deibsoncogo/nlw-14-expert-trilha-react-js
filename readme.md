@@ -1,5 +1,5 @@
-# Next Level Week Expert | Trilha React JS | Rocketseat
-Durante a Next Level Week Expert, uma experiência intensiva de aprendizado conduzida pelo renomado Diego Fernandes da Rocketseat, nasceu o projeto Notes, uma solução inovadora para a organização de notas, seja por meio de áudio ou texto.
+# Next Level Week 14 Expert | Trilha React JS | Rocketseat
+Durante a Next Level Week 14 Expert, uma experiência intensiva de aprendizado conduzida pelo renomado Diego Fernandes da Rocketseat, nasceu o projeto Notes, uma solução inovadora para a organização de notas, seja por meio de áudio ou texto.
 
 Utilizando um conjunto de tecnologias de ponta, destacando-se Vite, React JS, TypeScript, TailwindCSS, Sonner e Radix UI.
 
